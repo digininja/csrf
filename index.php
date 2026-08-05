@@ -25,7 +25,8 @@ $_SESSION['token'] = $token;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Burp Suite Macro Demo Test Page</title>
-	<meta name="Description" content="A page to use to practice with Burp Suite macros and session handling" />
+	<meta name="Description" content="A page to use to practice with Burp Suite macros and session handling rules to bypass CSRF protections." />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 </head>
 <body>
 	<h1>Burp Suite Macro Test Form</h1>
