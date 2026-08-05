@@ -1,4 +1,9 @@
 <?php
+
+$bytes = random_bytes(5);
+$nonce=bin2hex($bytes);
+
+header ("Content-Security-Policy: default-src 'none'; img-src 'self'; script-src 'nonce-" . $nonce . "'");
 session_start();
 
 $message = "";
@@ -18,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$message = "Token not sent in POST";
 	}
 }
-$token = md5(mt_rand());
+$bytes = random_bytes(16);
+$token=bin2hex($bytes);
 $_SESSION['token'] = $token;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -40,7 +46,7 @@ $_SESSION['token'] = $token;
 	<p>
 		Demo created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
 	</p>
-	<script>
+	<script nonce="<?=$nonce?>">
 		document.getElementById("token").value = "<?=htmlentities ($token)?>";
 	</script>
 </body>
